@@ -48,7 +48,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		bf.visible = false;
 			bfDeathSprite = new FlxSprite();
 			bfDeathSprite.frames = Paths.getSparrowAtlas('BF/bf_dies');
-			bfDeathSprite.animation.addByPrefix('firstDeath', 'bf fuckin dies lol', 26, false);
+			bfDeathSprite.animation.addByPrefix('firstDeath', 'bf fuckin dies lol', 24, false);
 			bfDeathSprite.animation.addByPrefix('deathLoop', 'bf dead loop', 24, true);
 			bfDeathSprite.animation.addByPrefix('deathConfirm', 'bf undeading', 24, false);
 			bfDeathSprite.antialiasing = true;
