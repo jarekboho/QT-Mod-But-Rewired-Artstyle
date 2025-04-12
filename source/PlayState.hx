@@ -2691,6 +2691,7 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 			var originx = kb_attack_saw.anim.curInstance.matrix.tx;
 			var originy = kb_attack_saw.anim.curInstance.matrix.ty;
 			kb_attack_saw.anim.play('saw anim attack', true);
+			kb_attack_saw.antialiasing = true;
 			kb_attack_saw.anim.curInstance.matrix.tx = originx;
 			kb_attack_saw.anim.curInstance.matrix.ty = originy;
 			kb_attack_saw.anim.curInstance.symbol.loop = PlayOnce;
@@ -2712,6 +2713,7 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 			var originx = kb_attack_saw.anim.curInstance.matrix.tx;
 			var originy = kb_attack_saw.anim.curInstance.matrix.ty;
 			kb_attack_saw.anim.play('saw anim alert', true);
+			kb_attack_saw.antialiasing = true;
 			kb_attack_saw.visible = true;
 			kb_attack_saw.anim.curInstance.matrix.tx = originx;
 			kb_attack_saw.anim.curInstance.matrix.ty = originy;
