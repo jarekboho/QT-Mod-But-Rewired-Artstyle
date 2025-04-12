@@ -57,6 +57,8 @@ class GameOverSubstate extends MusicBeatSubstate
 			bfDeathSprite.animation.play("firstDeath");
 			add(bfDeathSprite);
 
+			FlxG.camera.flash(0xFFff0000, 1);
+
 		camFollow.x = bfDeathSprite.x + 60;
 		camFollow.y = bfDeathSprite.y - 30;
 		}
