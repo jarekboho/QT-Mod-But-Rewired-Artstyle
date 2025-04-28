@@ -748,8 +748,8 @@ if(SONG.song.toLowerCase() == 'termination')
 				//Saw that one coming!
 				kb_attack_saw = new FlxAnimate(0, 0);
 				Paths.loadAnimateAtlas(kb_attack_saw, 'preloadStuff/saw_assets');
-				kb_attack_saw.visible = false;
 				kb_attack_saw.antialiasing = true;
+				kb_attack_saw.visible = false;
 
 				//Pincer shit for moving notes around for a little bit of trollin'
 				pincer1 = new FlxSprite(0, 0).loadGraphic(Paths.image('bonus/pincer-close', 'qt'));
@@ -877,8 +877,8 @@ if(SONG.song.toLowerCase() == 'cessation')
 		{
 		add(mom);
 		}
-		add(dad);
 		add(boyfriend);
+		add(dad);
 
 				switch (dad.curCharacter)
 				{
@@ -2684,15 +2684,25 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 		}
 		trace("HE ATACC!");
 		if(state){
+			if(dodgeToggleAnim == 0)
+			{
+			remove(kb_attack_saw);
+			insert(members.indexOf(boyfriend), kb_attack_saw);
+			}
+			if(dodgeToggleAnim == 1)
+			{
+			remove(kb_attack_saw);
+			insert(members.indexOf(boyfriend), kb_attack_saw);
+			remove(boyfriend);
+			insert(members.indexOf(kb_attack_saw), boyfriend);
+			}
 			FlxG.sound.play(Paths.sound(soundToPlay,'qt'),0.75);
 			kb_attack_alert.animation.play('attack');
 			kb_attack_alert.offset.set(41, 38);
 			//Play saw attack animation
-			var originx = kb_attack_saw.anim.curInstance.matrix.tx;
-			var originy = kb_attack_saw.anim.curInstance.matrix.ty;
 			kb_attack_saw.anim.play('saw anim attack', true);
-			kb_attack_saw.anim.curInstance.matrix.tx = originx;
-			kb_attack_saw.anim.curInstance.matrix.ty = originy;
+			kb_attack_saw.anim.curInstance.matrix.tx = 909.55;
+			kb_attack_saw.anim.curInstance.matrix.ty = 329.1;
 			kb_attack_saw.anim.curInstance.symbol.loop = PlayOnce;
 
 			//Slight delay for animation. Yeah I know I should be doing this using curStep and curBeat and what not, but I'm lazy -Haz
@@ -2709,12 +2719,22 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 				}
 			});
 		}else{
-			var originx = kb_attack_saw.anim.curInstance.matrix.tx;
-			var originy = kb_attack_saw.anim.curInstance.matrix.ty;
+			if(dodgeToggleAnim == 0)
+			{
+			remove(kb_attack_saw);
+			insert(members.indexOf(boyfriend), kb_attack_saw);
+			}
+			if(dodgeToggleAnim == 1)
+			{
+			remove(kb_attack_saw);
+			insert(members.indexOf(boyfriend), kb_attack_saw);
+			remove(boyfriend);
+			insert(members.indexOf(kb_attack_saw), boyfriend);
+			}
 			kb_attack_saw.anim.play('saw anim alert', true);
 			kb_attack_saw.visible = true;
-			kb_attack_saw.anim.curInstance.matrix.tx = originx;
-			kb_attack_saw.anim.curInstance.matrix.ty = originy;
+			kb_attack_saw.anim.curInstance.matrix.tx = 909.55;
+			kb_attack_saw.anim.curInstance.matrix.ty = 329.1;
 			kb_attack_saw.anim.curInstance.symbol.loop = PlayOnce;
 		}
 	}
