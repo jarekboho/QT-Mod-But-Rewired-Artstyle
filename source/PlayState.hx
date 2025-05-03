@@ -2503,6 +2503,10 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 							if(curStage == "street" && FlxG.random.bool(18.5)){ 
 								if(!(curBeat >= 190 && curStep <= 898)){
 								handleStageChange('Red');
+								if (tweenWarning != null){
+								tweenWarning.cancel();
+								tweenLight.cancel();
+								}
 								new FlxTimer().start(0.5, function(tmr:FlxTimer)
 								{
 								handleStageChange('Killer');
