@@ -2488,7 +2488,7 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 							//Code for QT's random "glitch" alt animation to play.
 							altAnim = '-alt';
 							
-							//Probably a better way of doing this by using the random int and throwing that at the end of the string... but I'm stupid and lazy. -Haz
+						//Probably a better way of doing this by using the random int and throwing that at the end of the string... but I'm stupid and lazy. -Haz
 							switch(FlxG.random.int(1, 3))
 							{
 								case 2:
