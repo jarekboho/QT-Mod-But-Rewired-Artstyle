@@ -748,6 +748,8 @@ if(SONG.song.toLowerCase() == 'termination')
 				//Saw that one coming!
 				kb_attack_saw = new FlxAnimate(0, 0);
 				Paths.loadAnimateAtlas(kb_attack_saw, 'preloadStuff/saw_assets');
+				kb_attack_saw.anim.play('', true);
+				kb_attack_saw.anim.pause();
 				kb_attack_saw.antialiasing = true;
 				kb_attack_saw.visible = false;
 
