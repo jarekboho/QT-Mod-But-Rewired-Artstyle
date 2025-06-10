@@ -4287,10 +4287,7 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 
 	}
 
-	var lightningStrikeBeat:Int = 0;
-	var lightningOffset:Int = 8;
-
-    var hasDanced:Bool = false;
+	var hasDanced:Bool = false;
 
 	override function beatHit()
 	{
@@ -4510,8 +4507,6 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
     }
     hasDanced = !hasDanced;
 	}
-
-	var curLight:Int = 0;
 
     var currentChange:String = "";
     var tweenWarning:FlxTween;
