@@ -22,7 +22,11 @@ class GameOverSubstate extends MusicBeatSubstate
 	{
 		var daStage = PlayState.curStage;
 		var daBf:String = '';
-		daBf = 'bf';
+		switch (daStage)
+		{
+			default:
+				daBf = 'bf';
+		}
 
 		super();
 
