@@ -669,6 +669,7 @@ var spotLight:FlxSprite;
 				boombox.scrollFactor.set(1, 1);
 				add(boombox);
 				boombox.animation.play('idle');
+				boombox.animation.pause();
 
 				blackScreenR = new FlxSprite(0, 0).makeGraphic(1280, 720, FlxColor.BLACK);
 				blackScreenR.scrollFactor.set(0, 0);
@@ -1510,6 +1511,9 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 		startedCountdown = true;
 		Conductor.songPosition = 0;
 		Conductor.songPosition -= Conductor.crochet * 5;
+
+		if(boombox != null)
+		boombox.animation.resume();
 
 		var swagCounter:Int = 0;
 
@@ -2924,7 +2928,7 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 				tweenWarning.cancel();
 				tweenLight.cancel();
 				}
-				boombox.animation.stop();
+				boombox.animation.pause();
 				canPause = false;
 				inCutscene = true;
 				paused = true;
@@ -3073,6 +3077,9 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 			lua = null;
 		}
 		#end
+
+		if(boombox != null)
+		boombox.animation.pause();
 
 		canPause = false;
 		FlxG.sound.music.volume = 0;
