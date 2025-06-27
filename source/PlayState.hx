@@ -444,7 +444,7 @@ var TVFront:FlxSprite;
 var blackScreen:FlxSprite;
 var blackScreenVideo:FlxSprite;
 var lightOverlay:FlxSprite;
-var boombox:FlxSprite;
+var boomBoxSpeakers:FlxSprite;
 var blackScreenR:FlxSprite;
 var redScreen:FlxSprite;
 var spotLight:FlxSprite;
@@ -661,15 +661,13 @@ var spotLight:FlxSprite;
 				lightOverlay.animation.play('Normal');
 				lightOverlay.blend = BlendMode.ADD;
 
-				boombox = new FlxSprite();
-				boombox.frames = Paths.getSparrowAtlas('speaker_assets', 'qt');
-				boombox.animation.addByPrefix('idle', 'bumpBox', 24, true);
-				boombox.setPosition(377, 437);
-				boombox.antialiasing = true;
-				boombox.scrollFactor.set(1, 1);
-				add(boombox);
-				boombox.animation.play('idle');
-				boombox.animation.pause();
+				boomBoxSpeakers = new FlxSprite();
+				boomBoxSpeakers.frames = Paths.getSparrowAtlas('speaker_assets', 'qt');
+				boomBoxSpeakers.animation.addByPrefix('boom', 'bumpBox', 24, false);
+				boomBoxSpeakers.setPosition(377, 437);
+				boomBoxSpeakers.antialiasing = true;
+				boomBoxSpeakers.scrollFactor.set(1, 1);
+				add(boomBoxSpeakers);
 
 				blackScreenR = new FlxSprite(0, 0).makeGraphic(1280, 720, FlxColor.BLACK);
 				blackScreenR.scrollFactor.set(0, 0);
@@ -905,6 +903,12 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 
          for (char in [boyfriend, gf, dad]) {
             if (char.shader == null) char.shader = colorShader; 
+        }
+        if(boomBoxSpeakers != null)
+        {
+        boomBoxSpeakers.shader = colorShader;
+	boomBoxSpeakers.x = gf.x - 350 + 162; // 727 - 350 + 162 = 377
+	boomBoxSpeakers.y = gf.y - 118 + 422; // 555 - 118 + 422 = 43
         }
 }
 
@@ -1512,15 +1516,14 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 		Conductor.songPosition = 0;
 		Conductor.songPosition -= Conductor.crochet * 5;
 
-		if(boombox != null)
-		boombox.animation.resume();
-
 		var swagCounter:Int = 0;
 
 		startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 		{
 			dad.dance();
 			gf.dance();
+			if (boomBoxSpeakers != null && boomBoxSpeakers.animation != null)
+			boomBoxSpeakers.animation.play("boom", true);
 			boyfriend.dance();
 			//boyfriend.playAnim('idle');
 
@@ -2928,7 +2931,7 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 				tweenWarning.cancel();
 				tweenLight.cancel();
 				}
-				boombox.animation.pause();
+				boomBoxSpeakers.animation.pause();
 				canPause = false;
 				inCutscene = true;
 				paused = true;
@@ -3077,9 +3080,6 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 			lua = null;
 		}
 		#end
-
-		if(boombox != null)
-		boombox.animation.pause();
 
 		canPause = false;
 		FlxG.sound.music.volume = 0;
@@ -4474,6 +4474,8 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 		if (curBeat % gfSpeed == 0)
 		{
 			gf.dance();
+			if (boomBoxSpeakers != null && boomBoxSpeakers.animation != null)
+			boomBoxSpeakers.animation.play("boom", true);
 		}
 
 		if (!boyfriend.animation.curAnim.name.startsWith("sing") && !bfDodging)
