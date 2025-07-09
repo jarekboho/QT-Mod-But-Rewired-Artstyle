@@ -883,11 +883,11 @@ if(SONG.song.toLowerCase() == 'cessation')
 				switch (dad.curCharacter)
 				{
 					case 'qt' | 'qt_annoyed':
-						camPos.set(dad.getMidpoint().x + 210, dad.getMidpoint().y + -50);
+						camPos.set(dad.getMidpoint().x + 230, dad.getMidpoint().y + -50);
 					case 'robot':
-						camPos.set(dad.getMidpoint().x + -200 + 210, dad.getMidpoint().y + -90 + -50);
+						camPos.set(dad.getMidpoint().x + -200 + 230, dad.getMidpoint().y + -90 + -50);
 					case 'qt-kb':
-						camPos.set(dad.getMidpoint().x + 210, dad.getMidpoint().y + -50);
+						camPos.set(dad.getMidpoint().x + 230, dad.getMidpoint().y + -50);
 				}
 
 if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == 'carefree' || SONG.song.toLowerCase() == 'careless' || SONG.song.toLowerCase() == 'terminate' || SONG.song.toLowerCase() == 'cessation' || SONG.song.toLowerCase() == 'termination')
@@ -2337,13 +2337,13 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 				switch (dad.curCharacter)
 				{
 					case 'qt' | 'qt_annoyed':
-						camFollow.x = dad.getMidpoint().x + 210;
+						camFollow.x = dad.getMidpoint().x + 230;
 						camFollow.y = dad.getMidpoint().y + -50;
 					case 'robot':
-						camFollow.x = dad.getMidpoint().x + -200 + 210;
+						camFollow.x = dad.getMidpoint().x + -200 + 230;
 						camFollow.y = dad.getMidpoint().y + -90 + -50;
 					case 'qt-kb':
-						camFollow.x = dad.getMidpoint().x + 210;
+						camFollow.x = dad.getMidpoint().x + 230;
 						camFollow.y = dad.getMidpoint().y + -50;
 				}
 			}
@@ -2366,8 +2366,8 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 					callLua('playerOneTurn', []);
 				#end
 
-						camFollow.x = boyfriend.getMidpoint().x + -250;
-						camFollow.y = boyfriend.getMidpoint().y + -110;
+						camFollow.x = boyfriend.getMidpoint().x + -175;
+						camFollow.y = boyfriend.getMidpoint().y + -113;
 			}
 		}
 
@@ -3495,7 +3495,6 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 
 	private function keyShit():Void
 	{
-
 		//Dodge code only works on termination -Haz
 		if(SONG.song.toLowerCase() == "termination"){
 			//Dodge code, yes it's bad but oh well. -Haz
