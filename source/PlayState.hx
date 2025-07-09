@@ -834,20 +834,6 @@ if(SONG.song.toLowerCase() == 'cessation')
 		dad = new Character(100, 100, SONG.player2);
 
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
-
-		switch (SONG.player2)
-		{
-			case 'gf':
-				dad.setPosition(gf.x, gf.y);
-				gf.visible = false;
-				if (isStoryMode)
-				{
-					camPos.x += 600;
-					tweenCamIn();
-				}
-			case 'dad':
-				camPos.x += 400;
-		}
 		
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
 
