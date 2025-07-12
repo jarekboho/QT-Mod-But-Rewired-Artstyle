@@ -982,17 +982,6 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 		// healthBar
 		add(healthBar);
 
-		// Add Kade Engine watermark
-		//WHY WON'T THIS WORK?! REEEEE
-		/*
-		var storyDifficultyHAZARDTEXT:String = "Normal";
-		
-		if (storyDifficulty == 2)
-			storyDifficultyHAZARDTEXT=="Hard";
-		else if(storyDifficulty == 0)
-			storyDifficultyHAZARDTEXT=="Easy";
-		else*/
-
 		kadeEngineWatermark = new FlxText(4,healthBarBG.y + 50,0,SONG.song + " " + (storyDifficulty == 2 ? "Hard" : storyDifficulty == 1 ? "Normal" : "Easy") + (Main.watermarks ? " - KE " + MainMenuState.kadeEngineVer : ""), 16);
 		kadeEngineWatermark.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		kadeEngineWatermark.scrollFactor.set();
@@ -2102,13 +2091,6 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 			setVar('cameraZoom',FlxG.camera.zoom);
 			callLua('update', [elapsed]);
 
-			/*for (i in 0...strumLineNotes.length) {
-				var member = strumLineNotes.members[i];
-				member.x = getVar("strum" + i + "X", "float");
-				member.y = getVar("strum" + i + "Y", "float");
-				member.angle = getVar("strum" + i + "Angle", "float");
-			}*/
-
 			FlxG.camera.angle = getVar('cameraAngle', 'float');
 			camHUD.angle = getVar('camHudAngle','float');
 
@@ -2240,9 +2222,6 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 		else
 			iconP2.animation.curAnim.curFrame = 0;
 
-		/* if (FlxG.keys.justPressed.NINE)
-			FlxG.switchState(new Charting()); */
-
 		#if debug
 		if (FlxG.keys.justPressed.EIGHT)
 		{
@@ -2270,10 +2249,6 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 			if(!qtCarelessFin){
 			// Conductor.songPosition = FlxG.sound.music.time;
 			Conductor.songPosition += FlxG.elapsed * 1000;
-			/*@:privateAccess
-			{
-				FlxG.sound.music._channel.
-			}*/
 			songPositionBar = Conductor.songPosition;
 
 			if (!paused)
@@ -3706,28 +3681,7 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 						else
 							noteCheck(controlArray, daNote);
 					}
-					/* 
-						if (controlArray[daNote.noteData])
-							goodNoteHit(daNote);
-					 */
 					// trace(daNote.noteData);
-					/* 
-						switch (daNote.noteData)
-						{
-							case 2: // NOTES YOU JUST PRESSED
-								if (upP || rightP || downP || leftP)
-									noteCheck(upP, daNote);
-							case 3:
-								if (upP || rightP || downP || leftP)
-									noteCheck(rightP, daNote);
-							case 1:
-								if (upP || rightP || downP || leftP)
-									noteCheck(downP, daNote);
-							case 0:
-								if (upP || rightP || downP || leftP)
-									noteCheck(leftP, daNote);
-						}
-					 */
 					if (daNote.wasGoodHit)
 					{
 						daNote.kill();
@@ -3779,15 +3733,6 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 						case 2:
 							if (loadRep)
 							{
-								/*if (upP)
-								{
-									spr.animation.play('pressed');
-									new FlxTimer().start(Math.abs(rep.replay.keyPresses[repReleases].time - Conductor.songPosition) + 10, function(tmr:FlxTimer)
-										{
-											spr.animation.play('static');
-											repReleases++;
-										});
-								}*/
 							}
 							else
 							{
@@ -3805,15 +3750,6 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 						case 3:
 							if (loadRep)
 								{
-								/*if (upP)
-								{
-									spr.animation.play('pressed');
-									new FlxTimer().start(Math.abs(rep.replay.keyPresses[repReleases].time - Conductor.songPosition) + 10, function(tmr:FlxTimer)
-										{
-											spr.animation.play('static');
-											repReleases++;
-										});
-								}*/
 								}
 							else
 							{
@@ -3828,15 +3764,6 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 						case 1:
 							if (loadRep)
 								{
-								/*if (upP)
-								{
-									spr.animation.play('pressed');
-									new FlxTimer().start(Math.abs(rep.replay.keyPresses[repReleases].time - Conductor.songPosition) + 10, function(tmr:FlxTimer)
-										{
-											spr.animation.play('static');
-											repReleases++;
-										});
-								}*/
 								}
 							else
 							{
@@ -3851,15 +3778,6 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 						case 0:
 							if (loadRep)
 								{
-								/*if (upP)
-								{
-									spr.animation.play('pressed');
-									new FlxTimer().start(Math.abs(rep.replay.keyPresses[repReleases].time - Conductor.songPosition) + 10, function(tmr:FlxTimer)
-										{
-											spr.animation.play('static');
-											repReleases++;
-										});
-								}*/
 								}
 							else
 							{
@@ -4321,15 +4239,6 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 			//Probably a better way of doing this lmao but I can't be bothered to clean this shit up -Haz
 			//Cam zooms and gas release effect!
 
-			/*if(curBeat >= 4 && curBeat <= 32) //for testing
-			{
-				//Gas Release effect
-				if (curBeat % 4 == 0)
-				{
-					qt_gas01.animation.play('burst');
-					qt_gas02.animation.play('burst');
-				}
-			}*/
 			if(curBeat >= 80 && curBeat <= 208) //first drop
 			{
 				//Gas Release effect
