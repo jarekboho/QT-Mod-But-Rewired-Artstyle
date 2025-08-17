@@ -435,16 +435,16 @@ var tvStaticLeft:FlxSprite;
 var warningScreen:FlxSprite;
 var tvStaticRight:FlxSprite;
 var blueScreen:FlxSprite;
+var tv_shadow:FlxSprite;
 var wall:FlxSprite;
+var tvShine:FlxSprite;
 var tvLights:FlxSprite;
 var TVFront:FlxSprite;
-var blackScreen:FlxSprite;
-var blackScreenVideo:FlxSprite;
+var TVFrontShine:FlxSprite;
+var fgWireBack:FlxSprite;
+var fgWireFront:FlxSprite;
 var lightOverlay:FlxSprite;
 var boomBoxSpeakers:FlxSprite;
-var blackScreenR:FlxSprite;
-var redScreen:FlxSprite;
-var spotLight:FlxSprite;
 
     private var colorShader:AdjustColorShader = new AdjustColorShader();
 
@@ -571,7 +571,7 @@ var spotLight:FlxSprite;
 				curStage = 'streetFinal';
 
 				tvStaticLeft = new FlxSprite();
-				tvStaticLeft.frames = Paths.getSparrowAtlas('TrashAlley/K1LL3R/tv_static_assets', 'qt');
+				tvStaticLeft.frames = Paths.getSparrowAtlas('obliterated/tv_static_assets', 'qt');
 				tvStaticLeft.animation.addByPrefix('static', 'static anim', 24, true);
 				tvStaticLeft.setPosition(-230, 523);
 				tvStaticLeft.antialiasing = true;
@@ -579,13 +579,13 @@ var spotLight:FlxSprite;
 				add(tvStaticLeft);
 				tvStaticLeft.animation.play('static');
 
-				warningScreen = new FlxSprite(-115, 581).loadGraphic(Paths.image('TrashAlley/K1LL3R/screen_danger', 'qt'));
+				warningScreen = new FlxSprite(-115, 581).loadGraphic(Paths.image('obliterated/screen_danger', 'qt'));
 				warningScreen.antialiasing = true;
 				warningScreen.scrollFactor.set(0.99, 0.99);
 				add(warningScreen);
 
 				tvStaticRight = new FlxSprite();
-				tvStaticRight.frames = Paths.getSparrowAtlas('TrashAlley/K1LL3R/tv_static_assets', 'qt');
+				tvStaticRight.frames = Paths.getSparrowAtlas('obliterated/tv_static_assets', 'qt');
 				tvStaticRight.animation.addByPrefix('static', 'static anim', 24, true);
 				tvStaticRight.setPosition(1231, 523);
 				tvStaticRight.antialiasing = true;
@@ -593,25 +593,28 @@ var spotLight:FlxSprite;
 				add(tvStaticRight);
 				tvStaticRight.animation.play('static');
 
-				blueScreen = new FlxSprite(-115, 581).loadGraphic(Paths.image('TrashAlley/BLU3/blue_screens', 'qt'));
+				blueScreen = new FlxSprite(-115, 581).loadGraphic(Paths.image('obliterated/blue_screens', 'qt'));
 				blueScreen.antialiasing = true;
 				blueScreen.scrollFactor.set(0.99, 0.99);
 				add(blueScreen);
 
-				wall = new FlxSprite();
-				wall.frames = Paths.getSparrowAtlas('TrashAlley/M4N4G3R5/wallManager', 'qt');
-				wall.animation.addByPrefix('Normal', 'wall-Normal', 24, true);
-				wall.animation.addByPrefix('Killer', 'wall-Killer', 24, true);
-				wall.animation.addByPrefix('Blue', 'wall-Blue', 24, true);	
-				wall.animation.addByPrefix('Red', 'wall-Red', 24, true);
-				wall.setPosition(-726, -50);
+				tv_shadow = new FlxSprite(-150, 530).loadGraphic(Paths.image('obliterated/tv_shadow', 'qt'));
+				tv_shadow.antialiasing = true;
+				tv_shadow.scrollFactor.set(0.99, 0.99);
+				add(tv_shadow);
+
+				wall = new FlxSprite(-649, -42).loadGraphic(Paths.image('obliterated/bg', 'qt'));
 				wall.antialiasing = true;
 				wall.scrollFactor.set(0.99, 0.99);
 				add(wall);
-				wall.animation.play('Normal');
+
+				tvShine = new FlxSprite(-306, 572).loadGraphic(Paths.image('obliterated/tv_shine', 'qt'));
+				tvShine.antialiasing = true;
+				tvShine.scrollFactor.set(0.99, 0.99);
+				add(tvShine);
 
 				tvLights = new FlxSprite();
-				tvLights.frames = Paths.getSparrowAtlas('TrashAlley/K1LL3R/tv_lights_assets', 'qt');
+				tvLights.frames = Paths.getSparrowAtlas('obliterated/tv_lights_assets', 'qt');
 				tvLights.animation.addByPrefix('Normal', 'tv lights animated', 24, true);
 				tvLights.animation.addByPrefix('Killer', 'tv lights animated', 24, true);
 				tvLights.animation.addByPrefix('Blue', 'blue', 24, true);	
@@ -623,35 +626,33 @@ var spotLight:FlxSprite;
 				tvLights.animation.play('Normal');
 				tvLights.blend = BlendMode.ADD;
 
-				TVFront = new FlxSprite();
-				TVFront.frames = Paths.getSparrowAtlas('TrashAlley/M4N4G3R5/fgManager', 'qt');
-				TVFront.animation.addByPrefix('Normal', 'tvFront-Normal', 24, true);
-				TVFront.animation.addByPrefix('Killer', 'tvFront-Killer', 24, true);
-				TVFront.animation.addByPrefix('Blue', 'tvFront-Blue', 24, true);	
-				TVFront.animation.addByPrefix('Red', 'tvFront-Red', 24, true);
-				TVFront.setPosition(-314, 873);
+				TVFront = new FlxSprite(-314, 873).loadGraphic(Paths.image('obliterated/fg', 'qt'));
 				TVFront.antialiasing = true;
 				TVFront.scrollFactor.set(1.35, 1.35);
 				//add(TVFront);
-				TVFront.animation.play('Normal');
 
-				blackScreen = new FlxSprite(-330, -220).makeGraphic(2500, 2500, FlxColor.BLACK);
-				blackScreen.scrollFactor.set(0.99, 0.99);
-				blackScreen.alpha = 0;
-				//add(blackScreen);
+				TVFrontShine = new FlxSprite(45, 873).loadGraphic(Paths.image('obliterated/fg_shine', 'qt'));
+				TVFrontShine.antialiasing = true;
+				TVFrontShine.scrollFactor.set(1.35, 1.35);
+				//add(TVFrontShine);
 
-				blackScreenVideo = new FlxSprite(-726, -50).makeGraphic(2674, 1309, FlxColor.BLACK);
-				blackScreenVideo.scrollFactor.set(0.99, 0.99);
-				blackScreenVideo.alpha = 0;
-				//add(blackScreenVideo);
+				fgWireBack = new FlxSprite(-331, -48).loadGraphic(Paths.image('obliterated/wire1', 'qt'));
+				fgWireBack.antialiasing = true;
+				fgWireBack.scrollFactor.set(1.5, 1.5);
+				//add(fgWireBack);
+
+				fgWireFront = new FlxSprite(-361, -51).loadGraphic(Paths.image('obliterated/wire2', 'qt'));
+				fgWireFront.antialiasing = true;
+				fgWireFront.scrollFactor.set(1.8, 1.8);
+				//add(fgWireFront);
 
 				lightOverlay = new FlxSprite();
-				lightOverlay.frames = Paths.getSparrowAtlas('TrashAlley/M4N4G3R5/gradientManager', 'qt');
+				lightOverlay.frames = Paths.getSparrowAtlas('common/gradientManager', 'qt');
 				lightOverlay.animation.addByPrefix('Normal', 'overlay-Normal', 24, true);
 				lightOverlay.animation.addByPrefix('Killer', 'overlay-Killer', 24, true);
 				lightOverlay.animation.addByPrefix('Red', 'overlay-Killer', 24, true);	
 				lightOverlay.animation.addByPrefix('Blue', 'overlay-Blue', 24, true);
-				lightOverlay.setPosition(-730, -60);
+				lightOverlay.setPosition(-654, -60);
 				lightOverlay.antialiasing = true;
 				lightOverlay.scrollFactor.set(1, 1);
 				//add(lightOverlay);
@@ -664,22 +665,7 @@ var spotLight:FlxSprite;
 				boomBoxSpeakers.setPosition(377, 437);
 				boomBoxSpeakers.antialiasing = true;
 				boomBoxSpeakers.scrollFactor.set(1, 1);
-				add(boomBoxSpeakers);
-
-				blackScreenR = new FlxSprite(0, 0).makeGraphic(1280, 720, FlxColor.BLACK);
-				blackScreenR.scrollFactor.set(0, 0);
-				blackScreenR.alpha = 0;
-				//add(blackScreenR);
-
-				redScreen = new FlxSprite(-360, -220).makeGraphic(2000, 2000, 0xFFb81404);
-				redScreen.scrollFactor.set(0, 0);
-				redScreen.alpha = 0;
-				//add(redScreen);
-
-				spotLight = new FlxSprite(-102, -627).loadGraphic(Paths.image('TrashAlley/lightFocus', 'qt'));
-				spotLight.antialiasing = true;
-				spotLight.alpha = 0;
-				//add(spotLight);
+				//add(boomBoxSpeakers);
 
 if(SONG.song.toLowerCase() == 'carefree' || SONG.song.toLowerCase() == 'cessation')
 handleStageChange('Normal');
@@ -852,6 +838,8 @@ if(SONG.song.toLowerCase() == 'cessation')
 					gf.y = 555 - gf.characterOrigin.y + gf.globalOffsets[1];			
 		}
 
+		if(boomBoxSpeakers != null)
+		add(boomBoxSpeakers);
 		add(gf);
 
 		if(kb_attack_saw != null)
@@ -877,12 +865,10 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 {
 		add(tvLights);
 		add(TVFront);
+		add(TVFrontShine);
+		add(fgWireBack);
+		add(fgWireFront);
 		add(lightOverlay);
-		add(blackScreen);
-		add(blackScreenVideo);
-		add(blackScreenR);
-		add(redScreen);
-		add(spotLight);
 
          for (char in [boyfriend, gf, dad]) {
             if (char.shader == null) char.shader = colorShader; 
@@ -2077,6 +2063,12 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 			}
 			}
 
+        if(tvShine != null && tvLights != null && TVFrontShine != null)
+        {
+        tvShine.alpha = tvLights.alpha;
+        TVFrontShine.alpha = tvLights.alpha;
+        }
+
 		#if !debug
 		perfectMode = false;
 		#end
@@ -2293,8 +2285,8 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
 						camFollow.x = dad.getMidpoint().x + 230;
 						camFollow.y = dad.getMidpoint().y + -50;
 					case 'robot':
-						camFollow.x = dad.getMidpoint().x + -200 + 230;
-						camFollow.y = dad.getMidpoint().y + -90 + -50;
+						camFollow.x = 450 + -115 + 230;
+						camFollow.y = 905 + -360 + -50;
 					case 'qt-kb':
 						camFollow.x = dad.getMidpoint().x + 230;
 						camFollow.y = dad.getMidpoint().y + -50;
@@ -4406,39 +4398,101 @@ if(SONG.song.toLowerCase() == 'censory-overload' || SONG.song.toLowerCase() == '
     var tweenWarning:FlxTween;
     var tweenLight:FlxTween;
 
-    private function handleStageChange(charName:String):Void {
-        if(currentChange == charName) return;
-        currentChange = charName;
-        for (prop in [wall, TVFront, lightOverlay, tvLights]) {
+    private function updateStageProps(charName:String):Void {
+        for (prop in [lightOverlay, tvLights]) {
             prop.animation.play(charName);
         }
+    }
+
+    private function updateVisibility(charName:String):Void {
         tvStaticLeft.visible = (charName == "Killer");
         tvStaticRight.visible = (charName == "Killer");
         blueScreen.visible = (charName == "Blue");
         warningScreen.visible = (charName == "Red");
         tvLights.visible = (charName != "Normal");
         tvLights.alpha = 1;
-        if (tweenWarning != null){
+    }
+
+    private function cancelTweensIfNeeded():Void {
+        if (tweenWarning != null) {
             tweenWarning.cancel();
+        }
+        if (tweenLight != null) {
             tweenLight.cancel();
         }
+    }
+
+    private function updatePropShader(prop:String, hue:Int, saturation:Int, contrast:Int, brightness:Int):Void {
+        var targetProp = Reflect.getProperty(this, prop);
+        if (targetProp == null) {
+           return;
+        }
+        
+        var newShader = new AdjustColorShader();
+        
+        targetProp.shader = newShader;
+        
+        newShader.hue = hue;
+        newShader.saturation = saturation;
+        newShader.contrast = contrast;
+        newShader.brightness = brightness;
+    }
+
+    private function setupRedTweens():Void {
+        tweenWarning = FlxTween.tween(warningScreen, {alpha: 0}, 0.5, {type: 1});
+        tweenLight = FlxTween.tween(tvLights, {alpha: 0}, 0.5, {type: 1});
+    }
+
+    private function resetAnimations():Void {
+        for (prop in [lightOverlay, tvLights]) {
+            var namedProp = prop;
+            if (namedProp != null)
+                namedProp.animation.play("Normal");
+        }
+    }
+
+    private function handleStageChange(charName:String):Void {
+        currentChange = charName;
+        
+        updateStageProps(charName);
+        updateVisibility(charName);
+        cancelTweensIfNeeded();
         
         switch (charName) {
             case "Killer":
-                updateColorShader(-20, -30, 20, -20);
+                tvShine.color = 0xFFB09AB1;
+                TVFrontShine.color = 0xFFB09AB1;
+                updatePropShader('TVFront', 35, -45, 20, -30);
+                updatePropShader('wall', 25, -55, 25, -35); 
+                updatePropShader('fgWireBack', 0, -20, 10, -20); 
+                updatePropShader('fgWireFront', 0, -20, 10, -25); 
+                updateColorShader(-20, -60, 25, -30);
             case "Blue":
-                updateColorShader(-35, -30, 20, -20);
+                tvShine.color = 0xFF4B96C2;
+                TVFrontShine.color = 0xFF4B96C2;
+                updatePropShader('wall', 0, -40, 25, -35); 
+                updatePropShader('TVFront', -10, -25, 20, -30);
+                updatePropShader('fgWireBack', -35, -20, 10, -20); 
+                updatePropShader('fgWireFront', -35, -20, 10, -25); 
+                updateColorShader(-35, -55, 25, -30);
             case "Red":
-                updateColorShader(-10,-30,20,-20);
-                tweenWarning = FlxTween.tween(warningScreen, {alpha: 0}, 0.5, {type: PERSIST});
-                tweenLight = FlxTween.tween(tvLights, {alpha: 0}, 0.5, {type: PERSIST});
+                tvShine.color = 0xFFCE2029;
+                TVFrontShine.color = 0xFFCE2029;
+                updatePropShader('wall', 35, -40, 25, -35); 
+                updatePropShader('TVFront', 40, -30, 25, -30);
+                updatePropShader('fgWireBack', 30, -20, 10, -20); 
+                updatePropShader('fgWireFront', 30, -20, 10, -25); 
+                updateColorShader(-10, -55, 25, -30);
+                setupRedTweens();
             default:
-                updateColorShader(-10, 3, 0, 0);
-                for (prop in [wall, TVFront, lightOverlay, tvLights]) {
-                var namedProp = prop;
-                if (namedProp != null)
-                namedProp.animation.play("Normal");
-        }
+                updatePropShader('wall', 0, 0, 0, 0);
+                remove(tvShine);
+                remove(fgWireFront);
+                remove(fgWireBack);
+                updatePropShader('TVFront', 0, 0, 0, 0);
+                TVFrontShine.color = 0xFFC986BD;
+                wall.loadGraphic(Paths.image("blissful/bg", 'qt'));
+                resetAnimations();
         }
     }
 }
