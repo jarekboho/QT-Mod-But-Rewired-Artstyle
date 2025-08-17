@@ -856,7 +856,7 @@ if(SONG.song.toLowerCase() == 'cessation')
 					case 'qt' | 'qt_annoyed':
 						camPos.set(dad.getMidpoint().x + 230, dad.getMidpoint().y + -50);
 					case 'robot':
-						camPos.set(dad.getMidpoint().x + -200 + 230, dad.getMidpoint().y + -90 + -50);
+						camPos.set(450 + -115 + 230, 905 + -360 + -50);
 					case 'qt-kb':
 						camPos.set(dad.getMidpoint().x + 230, dad.getMidpoint().y + -50);
 				}
