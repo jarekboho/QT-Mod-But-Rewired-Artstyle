@@ -58,7 +58,7 @@ class MenuCharacter extends FlxSprite
 		animation.play('idle');
 		this.x = x + FlxG.width * 0.25 * 0;
 
-		this.origin.x = 255.5;
+		this.origin.x = 251;
 		this.origin.y = 218.5;
 		}
 
