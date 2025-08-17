@@ -45,9 +45,6 @@ class Character extends FlxSprite
 				animation.addByIndices('sad', 'gf sad', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
 				animation.addByIndices('danceLeft', 'gf idle', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
 				animation.addByIndices('danceRight', 'gf idle', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-				animation.addByPrefix('preDance', 'gf pre dance0', 24, false);
-				animation.addByIndices('danceLeft-alt', 'gf caramelldansen', [14, 15, 16, 17, 18, 19, 0, 1, 2, 3], "", 24, false);
-				animation.addByIndices('danceRight-alt', 'gf caramelldansen', [4, 5, 6, 7, 8, 9, 10, 11, 12, 13], "", 24, false);
 				animation.addByPrefix('intro', 'gf shocked', 24, true);
 				animation.addByPrefix('dodge', 'gf dodge', 24, false);
 
@@ -55,9 +52,6 @@ class Character extends FlxSprite
 				addOffset('sad', -20, -22);
 				addOffset('danceLeft', 0, -9);
 				addOffset('danceRight', 0, -9);
-				addOffset('preDance', -1, -13);
-				addOffset('danceLeft-alt', 8, -13);
-				addOffset('danceRight-alt', 8, -13);
 				addOffset('intro', -34, -15);
 				addOffset('dodge', -14, -13);
 
@@ -82,7 +76,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 			case 'bf':
-				var assetList = ['BF/bf_dancing', 'BF/bf_transform', 'BF/bf_dodge', 'BF/bf_death'];
+				var assetList = ['BF/bf_dancing', 'BF/bf_transform', 'BF/bf_saw_sprites', 'BF/bf_death'];
 
     var texture:FlxAtlasFrames = Paths.getSparrowAtlas('BF/bf_assets', 'qt');
 
@@ -206,16 +200,15 @@ frames = texture;
 
 frames = texture;
 
-				animation.addByPrefix('idle', 'qt idle', 24, false); //How long until I get called out for using a weird framerate for the animation?
+				animation.addByPrefix('idle', 'qt idle', 24, false);
 				animation.addByPrefix('singUP', 'qt up', 24, false);
 				animation.addByPrefix('singRIGHT', 'qt right', 24, false);
 				animation.addByPrefix('singDOWN', 'qt down', 24, false);
-				animation.addByPrefix('singLEFT', 'qt left', 24, false);
+				animation.addByPrefix('singLEFT', 'qt left0', 24, false);
 				animation.addByPrefix('intro', 'hi_intro', 24, false);
 
 				//Positive = goes to left / Up. -Haz
 				//Negative = goes to right / Down. -Haz
-
 
 				addOffset('idle', 46, -27);
 				addOffset("singUP", 32, 5);
